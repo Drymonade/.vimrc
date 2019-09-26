@@ -50,6 +50,7 @@ inoremap <C-y> <C-O><C-R>
 " CTRL-A is Select all
 nnoremap <C-a> ggVG
 
+" Stay on visual mode when shifting blocks
 vnoremap > >gv
 vnoremap < <gv
 
