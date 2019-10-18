@@ -17,13 +17,14 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/html5.vim'               
 Plugin 'burner/vim-svelte'
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()
 
 filetype plugin indent on
 
 autocmd vimenter * NERDTree
-
+let g:NERDTreeWinSize=60
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
