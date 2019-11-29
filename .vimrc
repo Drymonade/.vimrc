@@ -59,7 +59,7 @@ au BufNewFile,BufRead *.py
 
 autocmd BufWritePost *.py call Flake8()
 
-highlight BadWhitespace ctermbg=red guibg=darkred
+highlight BadWhitespace ctermbg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 set encoding=utf-8
@@ -74,7 +74,6 @@ set nu
 nnoremap o o<Esc>
 
 set clipboard=unnamed
-set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set t_Co=256
