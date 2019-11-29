@@ -18,13 +18,14 @@ Plugin 'mxw/vim-jsx'
 Plugin 'othree/html5.vim'               
 Plugin 'burner/vim-svelte'
 Plugin 'mileszs/ack.vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
 filetype plugin indent on
 
 autocmd vimenter * NERDTree
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=55
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
@@ -39,17 +40,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" CTRL-Z is Undo
-noremap <C-z> u
-inoremap <C-z> <C-O>u
-
-" CTRL-Y is Redo
-noremap <C-y> <C-R>
-inoremap <C-y> <C-O><C-R>
-
-" CTRL-A is Select all
-nnoremap <C-a> ggVG
 
 " Stay on visual mode when shifting blocks
 vnoremap > >gv
