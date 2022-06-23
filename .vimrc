@@ -1,37 +1,34 @@
 set nocompatible
+set nocursorline
+set lazyredraw
+
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'nvie/vim-flake8'
-Bundle 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
+Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'pangloss/vim-javascript'        
-Plugin 'mxw/vim-jsx'
-Plugin 'othree/html5.vim'               
-Plugin 'burner/vim-svelte'
-Plugin 'mileszs/ack.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'fatih/vim-go'
+Plugin 'Vimjas/vim-python-pep8-indent'
 
 call vundle#end()
 
 filetype plugin indent on
 
 autocmd vimenter * NERDTree
-let g:NERDTreeWinSize=55
+let g:NERDTreeWinSize=50
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set termencoding=utf-8
 
-colorscheme deep-space
+colorscheme hybrid
 
 let mapleader = " "
 
@@ -41,31 +38,47 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+"multiple paste
+xnoremap p pgvy
+
+"my typical typo
+cnoreabbrev W w
+
 " Stay on visual mode when shifting blocks
 vnoremap > >gv
 vnoremap < <gv
 
+" Fast oneline python (un)comment
+nnoremap <leader>q ^i# <Esc>
+nnoremap <leader>w ^d d d<Esc>
+
 set bs=2
 set showmatch           " show matching brackets/parenthesis
+
+set guifont=Source\ Code\ Pro\ for\ Powerline:h16 
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
+    \ set smarttab |
     \ set expandtab |
-    \ set autoindent |
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js
+    \ set tabstop=2 |
+    \ set shiftwidth=2 |
+    \ set smarttab | 
+    \ set expandtab |
+    \ set smartindent |
     \ set fileformat=unix
 
 autocmd BufWritePost *.py call Flake8()
 
 highlight BadWhitespace ctermbg=red
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.js match BadWhitespace /\s\+$/
 
 set encoding=utf-8
-
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 let python_highlight_all=1
 syntax on
